@@ -1,12 +1,5 @@
-# SmartPay AP — AI-Powered Invoice Reconciliation
+# AI-Powered Invoice Reconciliation
 
-**AI Architect Case Study | HTC Global Services | Acme Manufacturing**
-
-SmartPay AP automates Accounts Payable invoice reconciliation for Acme Manufacturing.
-Acme processes ~1 million supplier invoices per month across 25 countries.
-This system detects mismatches, classifies discrepancy types, retrieves vendor
-contract context (RAG), drafts dispute emails, and gates every action behind a
-human approval step before anything is sent.
 
 ---
 
@@ -1015,4 +1008,4 @@ pytest -v
 
 ---
 
-*SmartPay AP — AI Architect Case Study | HTC Global Services | Acme Manufacturing*
+
