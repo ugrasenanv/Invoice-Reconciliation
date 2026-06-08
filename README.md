@@ -52,57 +52,8 @@ AI-Powered Invoice Reconciliation automates Accounts Payable invoice reconciliat
 +==============================================================================+
 |   AI-Powered Invoice Reconciliation — SYSTEM OVERVIEW                         |
 +==============================================================================+
-|                                                                              |
-|   INPUT SOURCES                                                              |
-|   +-------------+   +-------------+   +---------------------+               |
-|   | invoices.csv|   | po_grn.csv  |   | labelled_           |               |
-|   | (1500 lines)|   | (300 POs)   |   | mismatches.csv      |               |
-|   +------+------+   +------+------+   +----------+----------+               |
-|          |                 |                     |                           |
-|          v                 v                     v                           |
-|   +----------------------------------------------------------------------+  |
-|   |                     DATA LAYER                                        |  |
-|   |   load_invoices()   load_po_grn()   load_labels()                    |  |
-|   |   aggregate_invoices()  (validate, parse dates, drop nulls)          |  |
-|   +----------------------------------------------------------------------+  |
-|          |                 |                                                 |
-|          v                 v                                                 |
-|   +----------------------------------------------------------------------+  |
-|   |             MATCHING & CLASSIFICATION LAYER  (D2)                    |  |
-|   |                                                                       |  |
-|   |   match_invoices_to_pos()  -->  classify_mismatches()                |  |
-|   |   [numeric ID suffix join]      [label-driven + rule fallback]       |  |
-|   |                                                                       |  |
-|   |   Mismatch types:  PRICE_VARIANCE | QUANTITY_VARIANCE                |  |
-|   |                    TAX_MISCODE    | MISSING_PO                       |  |
-|   |                                                                       |  |
-|   |   evaluate()  -->  Precision / Recall / F1  (Macro F1 = 1.000)      |  |
-|   +----------------------------------------------------------------------+  |
-|          |                                                                   |
-|          v                                                                   |
-|   +----------------------------------------------------------------------+  |
-|   |                  AGENTIC LAYER — LangGraph  (D3)                     |  |
-|   |                                                                       |  |
-|   |   Planner --> Guardrail --> Matcher --> RAG Lookup -->               |  |
-|   |   Dispute Generator --> Human Approval Gate --> [Approve / Reject]   |  |
-|   |                                                                       |  |
-|   |   State:  invoices | plan | matches | mismatches | emails |          |  |
-|   |           approved | audit_trail | rag_context | final_status        |  |
-|   +----------------------------------------------------------------------+  |
-|          |                                                                   |
-|          v                                                                   |
-|   +----------------------------------------------------------------------+  |
-|   |                  GUARDRAILS & SAFETY LAYER                           |  |
-|   |                                                                       |  |
-|   |   [1] Invoice ID format validation  (INV\d+ pattern)                 |  |
-|   |   [2] High-value threshold block    (> $50,000 -> manual review)     |  |
-|   |   [3] Tool whitelist enforcement    (only 4 registered tools)        |  |
-|   |   [4] Auto-send prevention          (Human Gate mandatory)           |  |
-|   |   [5] Immutable audit trail         (every node, timestamped)        |  |
-|   +----------------------------------------------------------------------+  |
-|                                                                              |
-+==============================================================================+
-```
+
+<img width="1691" height="606" alt="image" src="https://github.com/user-attachments/assets/cef61397-1c79-4e1a-9d86-99a752a46e33" />
 
 ---
 
